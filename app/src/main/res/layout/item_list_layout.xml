@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:longClickable="true"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:background="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:id="@+id/itemCoverContiner"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e9e9e9"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/item_list_purchase"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp" android:alpha="0.5"
+            android:src="@drawable/ic_shopping_cart_black_24dp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/itemCoverContiner"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="عنوان"
+            android:textSize="14dp"
+            android:textColor="@android:color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/item_list_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="قسمت 7"
+                android:textSize="12dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/item_list_duration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="00:00:00"
+                android:textSize="12dp"
+                android:layout_weight="0.3"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentBottom="true"
+        android:background="#e9e9e9"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginBottom="50dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="115dp"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:longClickable="true"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:background="?android:attr/selectableItemBackground">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardCoverContiner"
+            android:layout_width="wrap_content"
+            android:layout_height="115dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true">
+                <ImageView
+                    android:id="@+id/backImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#e9e9e9"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/card_purchase"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="30dp" android:alpha="0.5"
+                    android:src="@drawable/ic_shopping_cart_black_24dp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <RelativeLayout
+            android:id="@+id/bottomHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/cardCoverContiner"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom">
+
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="بهار نارنج"
+                android:textAlignment="center"
+                android:textSize="13dp"
+                android:textColor="@android:color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_title"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/card_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="dfgfgjgf"
+                    android:textSize="11dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/card_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:text="00:00:00"
+                    android:textSize="11dp"
+                    android:layout_weight="0.7"
+                    android:layoutDirection="ltr"
+                    android:textDirection="ltr"/>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
