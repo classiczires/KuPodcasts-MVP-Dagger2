@@ -1,2 +1,2 @@
-# PersianPodcasts
-config PersianPodcasts with your server 
+# KuPodcasts
+config KuPodcasts with your server 
