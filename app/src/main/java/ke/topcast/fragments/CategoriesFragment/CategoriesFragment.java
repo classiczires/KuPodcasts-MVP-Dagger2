@@ -1,7 +1,6 @@
 package ke.topcast.fragments.CategoriesFragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,11 +21,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import ke.topcast.ConnectToServer.Api;
+import ke.topcast.Data.ConnectToServer.Api;
 import ke.topcast.R;
 import ke.topcast.activities.MainActivity;
-import ke.topcast.fragments.NewPodcastsFragment.NewPodcastsFragment;
-import ke.topcast.models.Podcast;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

@@ -1,7 +1,6 @@
 package ke.topcast.fragments.NewPodcastsFragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ke.topcast.ConnectToServer.Api;
+import ke.topcast.Data.ConnectToServer.Api;
 import ke.topcast.R;
 import ke.topcast.activities.MainActivity;
 import ke.topcast.interfaces.OnLoadMoreListener;
