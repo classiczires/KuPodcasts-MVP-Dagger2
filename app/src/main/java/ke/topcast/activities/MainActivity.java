@@ -53,7 +53,7 @@ import ke.topcast.fragments.NewPodcastsFragment.NewPodcastsFragment;
 import ke.topcast.fragments.PlayerFragment.PlayerFragment;
 import ke.topcast.interfaces.OnLoadMoreListener;
 import ke.topcast.interfaces.OnPodcastListener;
-import ke.topcast.models.Podcast;
+import ke.topcast.data.model.Podcast;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

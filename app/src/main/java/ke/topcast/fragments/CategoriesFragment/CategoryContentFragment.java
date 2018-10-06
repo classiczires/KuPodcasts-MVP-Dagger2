@@ -28,7 +28,7 @@ import ke.topcast.data.network.Api;
 import ke.topcast.R;
 import ke.topcast.activities.MainActivity;
 import ke.topcast.interfaces.OnLoadMoreListener;
-import ke.topcast.models.Podcast;
+import ke.topcast.data.model.Podcast;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

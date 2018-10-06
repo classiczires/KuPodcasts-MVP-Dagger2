@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ke.topcast.R;
-import ke.topcast.models.Podcast;
+import ke.topcast.data.model.Podcast;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.MyViewHolder> {
 

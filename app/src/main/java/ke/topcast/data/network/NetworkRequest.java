@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ke.topcast.models.Podcast;
+import ke.topcast.data.model.Podcast;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -18,7 +18,7 @@ public class NetworkRequest extends AsyncTask<Void, Void, String> {
     String url;
     RequestBody requestBody;
 
-    NetworkRequest(String url, RequestBody requestBody) {
+    public NetworkRequest(String url, RequestBody requestBody) {
         this.requestBody = requestBody;
         this.url = url;
     }

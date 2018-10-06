@@ -14,7 +14,7 @@ import java.util.List;
 
 import ke.topcast.R;
 import ke.topcast.activities.MainActivity;
-import ke.topcast.models.Podcast;
+import ke.topcast.data.model.Podcast;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
