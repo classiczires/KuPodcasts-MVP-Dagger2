@@ -1,4 +1,4 @@
-package ke.topcast.Data.Model;
+package ke.topcast.data.Model;
 
 public interface GetRequest {
 

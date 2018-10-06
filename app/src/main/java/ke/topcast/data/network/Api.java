@@ -1,4 +1,4 @@
-package ke.topcast.Data.ConnectToServer;
+package ke.topcast.data.network;
 
 public class Api {
 

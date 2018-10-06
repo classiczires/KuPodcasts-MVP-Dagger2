@@ -1,8 +1,8 @@
-package ke.topcast.Data.Model;
+package ke.topcast.data.Model;
 
 import java.util.HashMap;
 
-import ke.topcast.Data.ConnectToServer.Api;
+import ke.topcast.data.network.Api;
 import ke.topcast.activities.MainActivity;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

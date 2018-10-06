@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ke.topcast.Data.ConnectToServer.Api;
+import ke.topcast.data.network.Api;
 import ke.topcast.R;
 import ke.topcast.adapters.MostPupolarHorizontalAdapter;
 import ke.topcast.adapters.NewHorizontalAdapter;
