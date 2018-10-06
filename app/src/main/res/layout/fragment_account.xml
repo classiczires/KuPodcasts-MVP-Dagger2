@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.AccountFragment.AccountFragment"
+    tools:context=".view.fragments.AccountFragment.AccountFragment"
     android:background="@android:color/white">
 
     <LinearLayout
@@ -54,13 +54,13 @@
                 app:tabSelectedTextColor="@color/colorPrimaryDark">
             </android.support.design.widget.TabLayout>
 
-            <ke.topcast.RtlViewPager.RtlViewPager
+            <ke.topcast.view.RtlViewPager.RtlViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="?android:attr/actionBarSize">
 
-            </ke.topcast.RtlViewPager.RtlViewPager>
+            </ke.topcast.view.RtlViewPager.RtlViewPager>
 
         </RelativeLayout>
 

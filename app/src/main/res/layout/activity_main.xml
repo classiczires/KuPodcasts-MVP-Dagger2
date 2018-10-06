@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
-    tools:context=".activities.MainActivity">
+    tools:context=".view.activities.MainActivity">
 
     <RelativeLayout
         android:id="@+id/homeContent"
@@ -180,7 +180,7 @@
     </RelativeLayout>
 
 
-    <ke.topcast.bottomnavigation.BottomNavigationViewEx
+    <ke.topcast.view.bottomnavigation.BottomNavigationViewEx
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -192,6 +192,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation">
 
-    </ke.topcast.bottomnavigation.BottomNavigationViewEx>
+    </ke.topcast.view.bottomnavigation.BottomNavigationViewEx>
 
 </android.support.constraint.ConstraintLayout>

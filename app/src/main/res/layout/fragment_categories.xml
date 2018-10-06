@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CategoriesFragment.CategoriesFragment"
+    tools:context=".view.fragments.CategoriesFragment.CategoriesFragment"
     android:background="@android:color/white">
     <android.support.v4.widget.ContentLoadingProgressBar
         android:id="@+id/loadingProgressBar"
