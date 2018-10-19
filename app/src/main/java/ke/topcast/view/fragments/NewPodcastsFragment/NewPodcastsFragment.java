@@ -24,11 +24,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ke.topcast.model.network.Api;
+import ke.topcast.utils.Api;
 import ke.topcast.R;
+import ke.topcast.utils.CommonUtils;
 import ke.topcast.view.activities.MainActivity;
 import ke.topcast.interfaces.OnLoadMoreListener;
-import ke.topcast.model.data.Podcast;
+import ke.topcast.model.Podcast;
+import ke.topcast.view.recyclerView.LoadingViewHolder;
+import ke.topcast.view.recyclerView.MyViewHolder;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -214,7 +217,7 @@ public class NewPodcastsFragment extends Fragment {
                         .url(url)
                         .post(requestBody)
                         .addHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW")
-                        .addHeader("Authorization", MainActivity.token)
+                        .addHeader("Authorization", CommonUtils.token)
                         .addHeader("Cache-Control", "no-cache")
                         .build();
 
@@ -281,19 +284,19 @@ public class NewPodcastsFragment extends Fragment {
             if (viewType == VIEW_TYPE_ITEM) {
                 View itemView = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.item_list_layout, parent, false);
-                return new MainActivity.ListViewHolder(itemView);
+                return new MyViewHolder(itemView, false);
             }else if (viewType == VIEW_TYPE_LOADING) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.loading_layout, parent, false);
-                return new MainActivity.LoadingViewHolder(view);
+                return new LoadingViewHolder(view);
             }
             return null;
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            if (holder instanceof MainActivity.ListViewHolder) {
-                final MainActivity.ListViewHolder myViewHolder = (MainActivity.ListViewHolder) holder;
+            if (holder instanceof MyViewHolder) {
+                final MyViewHolder myViewHolder = (MyViewHolder) holder;
                 myViewHolder.purchaseArt.setVisibility(View.GONE);
                 Podcast podcast = newPodcasts.get(position);
 
@@ -313,8 +316,8 @@ public class NewPodcastsFragment extends Fragment {
                         .transition(withCrossFade().crossFade(200))
                         .into(myViewHolder.art);
 
-            } else if (holder instanceof MainActivity.LoadingViewHolder) {
-                MainActivity.LoadingViewHolder loadingViewHolder = (MainActivity.LoadingViewHolder) holder;
+            } else if (holder instanceof LoadingViewHolder) {
+                LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
                 loadingViewHolder.progressBar.setIndeterminate(true);
             }
         }

@@ -1,32 +1,50 @@
 package ke.topcast.presenter;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
+import java.util.List;
 
-import ke.topcast.model.network.Api;
-import ke.topcast.model.network.NetworkRequest;
-import ke.topcast.view.adapters.NewHorizontalAdapter;
+import ke.topcast.utils.Api;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class Presenter {
-    NewPodcastsPresenter newPodcastsPresenter;
+    public RecyclerPresenter searchRP;
+    public RecyclerPresenter newPodcastsRP;
+    public RecyclerPresenter suggestedPodcastsRP;
+    public RecyclerPresenter popularPodcastsRP;
 
-    void initializeNewPodcasts(){
-        newPodcastsPresenter = new NewPodcastsPresenter();
-        newHorizontalAdapter = new NewHorizontalAdapter(newPodcastsPresenter);
+
+    public Presenter(RecyclerPresenter searchRP, RecyclerPresenter newPodcastsRP, RecyclerPresenter suggestedPodcastsRP, RecyclerPresenter popularPodcastsRP) {
+        this.searchRP = searchRP;
+        this.newPodcastsRP = newPodcastsRP;
+        this.suggestedPodcastsRP = suggestedPodcastsRP;
+        this.popularPodcastsRP = popularPodcastsRP;
     }
 
 
-    public void getNewPodcasts(int limitFrom, int limitTo) {
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("limitFrom", String.valueOf(limitFrom))
-                .addFormDataPart("limitTo", String.valueOf(limitTo))
-                .build();
+    public void initializeRP(){
+        HashMap<String, String> data = new HashMap<String, String>();
+        data.put("limitFrom", String.valueOf(0));
+        data.put("limitTo", String.valueOf(50));
 
-        NetworkRequest request =
-                request = new NetworkRequest(Api.URL_GET_NEW_PODCASTS, requestBody, newPodcastsPresenter, newHorizontalAdapter);
+        newPodcastsRP.loadPodcasts(data, Api.URL_GET_NEW_PODCASTS);
+        data.put("category", "پیشنهادی");
+        suggestedPodcastsRP.loadPodcasts( data, Api.URL_CATEGORY_PODCAST);
 
-        request.execute();
+        data.remove("category");
+        data.put("category", "محبوب ترین ها");
+        popularPodcastsRP.loadPodcasts(data, Api.URL_GET_NEW_PODCASTS);
+    }
+
+    public void searchPodcasts(String term, int limitFrom, int limitTo) {
+        searchRP.adapter.notifyDataSetChanged();
+        searchRP.clearList();
+        HashMap<String, String> data = new HashMap<String, String>();
+        data.put("limitFrom", String.valueOf(0));
+        data.put("limitTo", String.valueOf(10));
+        data.put("term", term);
+
+        searchRP.loadPodcasts(data, Api.URL_SEARCH);
     }
 }

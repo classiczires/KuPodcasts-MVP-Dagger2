@@ -24,15 +24,15 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import ke.topcast.model.network.Api;
+import ke.topcast.utils.Api;
 import ke.topcast.R;
+import ke.topcast.utils.CommonUtils;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import static ke.topcast.view.activities.MainActivity.MY_PREFS_NAME;
 
 /**
  * A login screen that offers login via email/password.
@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        MainActivity.RegisterPage = true;
+        CommonUtils.RegisterPage = true;
         ctx = this;
 
         getSupportActionBar().setTitle("ایجاد حساب");
@@ -267,7 +267,7 @@ public class LoginActivity extends AppCompatActivity {
                         token = object1.getString("token");
                         if (token.isEmpty())
                             return false;
-                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences(CommonUtils.MY_PREFS_NAME, MODE_PRIVATE).edit();
                         token = "Bearer " + token;
                         editor.putString("token", token);
                         editor.commit();
@@ -297,7 +297,7 @@ public class LoginActivity extends AppCompatActivity {
                         token = object2.getString("token");
                         if (token.isEmpty())
                             return false;
-                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences(CommonUtils.MY_PREFS_NAME, MODE_PRIVATE).edit();
                         token = "Bearer " + token;
                         editor.putString("token", token);
                         editor.putString("name", name);
@@ -363,7 +363,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getSharedPreferences(CommonUtils.MY_PREFS_NAME, MODE_PRIVATE).edit();
 
                 OkHttpClient client = new OkHttpClient();
 

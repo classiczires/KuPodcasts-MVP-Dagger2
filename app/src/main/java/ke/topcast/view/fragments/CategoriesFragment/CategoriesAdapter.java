@@ -10,18 +10,18 @@ import android.widget.TextView;
 import java.util.List;
 
 import ke.topcast.R;
-import ke.topcast.model.data.Podcast;
+import ke.topcast.model.Podcast;
 
-public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.MyViewHolder> {
+public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.MViewHolder> {
 
     private List<Podcast> podcasts;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MViewHolder extends RecyclerView.ViewHolder {
 
         ImageView art;
         TextView title, description;
 
-        public MyViewHolder(View view) {
+        public MViewHolder(View view) {
             super(view);
             art = (ImageView) view.findViewById(R.id.img);
             title = (TextView) view.findViewById(R.id.item_list_title);
@@ -34,15 +34,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list_layout, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new MViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MViewHolder holder, int position) {
 
         Podcast podcast = podcasts.get(position);
 

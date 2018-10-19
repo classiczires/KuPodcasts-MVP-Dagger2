@@ -1,4 +1,4 @@
-package ke.topcast.model.data;
+package ke.topcast.model;
 
 public class Podcast {
     private String title = "";

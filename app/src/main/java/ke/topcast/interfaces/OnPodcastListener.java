@@ -1,6 +1,6 @@
 package ke.topcast.interfaces;
 
-import ke.topcast.model.data.Podcast;
+import ke.topcast.model.Podcast;
 
 /**
  * Created by saeed on 8/10/18.

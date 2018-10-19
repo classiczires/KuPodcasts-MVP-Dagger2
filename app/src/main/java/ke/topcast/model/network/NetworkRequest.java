@@ -1,5 +1,7 @@
 package ke.topcast.model.network;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -7,9 +9,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ke.topcast.model.data.Podcast;
-import ke.topcast.presenter.AdapterOps;
+import java.util.ArrayList;
+import java.util.List;
+
+import ke.topcast.model.Podcast;
+import ke.topcast.presenter.OnNetworkTaskCompleted;
 import ke.topcast.presenter.PodcastOps;
+import ke.topcast.utils.CommonUtils;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -18,30 +24,19 @@ import okhttp3.Response;
 public class NetworkRequest extends AsyncTask<Void, Void, String> {
     String url;
     RequestBody requestBody;
-    PodcastOps podcastOps;
-    AdapterOps adapterOps;
+    OnNetworkTaskCompleted listner;
+    Context context;
 
-    public NetworkRequest(String url, RequestBody requestBody, PodcastOps podcastOps, AdapterOps adapterOps) {
+    public NetworkRequest(String url, RequestBody requestBody, Context context, OnNetworkTaskCompleted listner) {
+        this.context = context;
         this.requestBody = requestBody;
         this.url = url;
-        this.podcastOps = podcastOps;
-        this.adapterOps = adapterOps;
+        this.listner = listner;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        if (podcastOps.getPodcastsCount() > 0 ){
-            if (podcastOps.getPodcast(podcastOps.getPodcastsCount() - 1) != null) {
-                podcastOps.insert(null);
-                adapterOps.notifyItemInsert(podcastOps.getPodcastsCount() - 1);
-            }
-            else this.cancel(true);
-        }
-        else {
-            podcastOps.insert(null);
-            adapterOps.notifyItemInsert(podcastOps.getPodcastsCount() - 1);
-        }
     }
 
     @Override
@@ -51,11 +46,9 @@ public class NetworkRequest extends AsyncTask<Void, Void, String> {
             if (s != null){
                 JSONObject object = new JSONObject(s);
 
-                if (podcastOps.getPodcastsCount() > 0 ){
-                    podcastOps.remove(podcastOps.getPodcastsCount() - 1);
-                    adapterOps.notifyItemRemove(podcastOps.getPodcastsCount());
-                }
                 JSONArray jsonArray = object.getJSONArray("podcasts");
+
+                List<Podcast> podcastList = new ArrayList<>();
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jso = jsonArray.getJSONObject(i);
@@ -68,12 +61,12 @@ public class NetworkRequest extends AsyncTask<Void, Void, String> {
                     String imageUrl = jso.getString("coverPath");
                     String podcastUrl = jso.getString("podcastPath");
 
-                    podcastOps.insert(new Podcast(title, description, imageUrl, podcastUrl, sku, duration, programBuilder, narrators));
+                    podcastList.add(new Podcast(title, description, imageUrl, podcastUrl, sku, duration, programBuilder, narrators));
                 }
-                adapterOps.notifyDataSetChange();
+                listner.OnNetworkTaskCompleted(podcastList);
 
             }else
-                Toast.makeText(ctx, "خطا در اتصال", Toast.LENGTH_LONG).show();
+                listner.OnNetworkTaskCompleted(null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -88,7 +81,7 @@ public class NetworkRequest extends AsyncTask<Void, Void, String> {
             Request request = new Request.Builder()
                     .url(url)
                     .post(requestBody)
-                    .addHeader("Authorization", token)
+                    .addHeader("Authorization", CommonUtils.token)
                     .build();
 
             Response response = client.newCall(request).execute();
@@ -98,6 +91,12 @@ public class NetworkRequest extends AsyncTask<Void, Void, String> {
         }catch (Exception e){
             return null;
         }
+    }
+
+    public boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
     }
 }
 

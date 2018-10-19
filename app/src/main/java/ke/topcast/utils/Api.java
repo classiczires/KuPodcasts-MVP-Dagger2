@@ -1,4 +1,4 @@
-package ke.topcast.model.network;
+package ke.topcast.utils;
 
 public class Api {
 

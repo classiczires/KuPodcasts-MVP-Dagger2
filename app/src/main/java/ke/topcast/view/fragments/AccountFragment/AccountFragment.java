@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ke.topcast.R;
+import ke.topcast.utils.CommonUtils;
 import ke.topcast.view.activities.MainActivity;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -42,7 +43,7 @@ public class AccountFragment extends Fragment {
         userNameTeV = (TextView) view.findViewById(R.id.user_name);
         userPhoneTeV = (TextView) view.findViewById(R.id.user_phone);
 
-        SharedPreferences prefs = getActivity().getSharedPreferences(MainActivity.MY_PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences(CommonUtils.MY_PREFS_NAME, MODE_PRIVATE);
         userNameTeV.setText(prefs.getString("name", ""));
         userPhoneTeV.setText(prefs.getString("phoneNumber", ""));
 

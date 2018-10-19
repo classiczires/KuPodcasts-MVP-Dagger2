@@ -21,8 +21,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import ke.topcast.model.network.Api;
+import ke.topcast.utils.Api;
 import ke.topcast.R;
+import ke.topcast.utils.CommonUtils;
 import ke.topcast.view.activities.MainActivity;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -77,7 +78,7 @@ public class CategoriesFragment extends Fragment {
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("Authorization", MainActivity.token)
+                .addFormDataPart("Authorization", CommonUtils.token)
                 .build();
 
         GetCategoriesNetworkRequest request = request = new GetCategoriesNetworkRequest(Api.URL_GET_CATEGORIES, requestBody);
@@ -147,7 +148,7 @@ public class CategoriesFragment extends Fragment {
                 Request request = new Request.Builder()
                         .url(url)
                         .post(requestBody)
-                        .addHeader("Authorization", MainActivity.token)
+                        .addHeader("Authorization", CommonUtils.token)
                         .build();
 
                 Response response = client.newCall(request).execute();
